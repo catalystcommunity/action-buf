@@ -37,23 +37,30 @@ Greet someone
 <!-- end outputs -->
 <!-- start examples -->
 
-### Example usage
+### Example usage on release to push to BSR
 
 ```yaml
-on: [push]
-
+name: Push protos to buf
+on:
+  release:
+    types: [created]
 jobs:
-  hello_world_job:
+  buf-push:
+    name: Push protos to buf bsr
     runs-on: ubuntu-latest
-    name: A job to say hello
     steps:
-      - uses: actions/checkout@v2
-      - id: foo
-        uses: actions/hello-world-composite-action@v1
+      - uses: crazy-max/ghaction-dump-context@v1
+      - uses: catalystsquad/action-buf@v1
         with:
-          who-to-greet: "Mona the Octocat"
-      - run: echo random-number ${{ steps.foo.outputs.random-number }}
-        shell: bash
+          token: ${{ secrets.AUTOMATION_PAT }}
+          buf-user: ${{ secrets.BUF_USER }}
+          buf-token: ${{ secrets.BUF_TOKEN }}
+          lint: false
+          generate: false
+          breaking: false
+          mod-prune: false
+          mod-update: false
+          push: true
 ```
 
 <!-- end examples -->
