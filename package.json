@@ -19,6 +19,6 @@
   "homepage": "https://github.com/swarm-io/action-buf#readme",
   "dependencies": {
     "@actions/core": "^1.6.0",
-    "minimist": "^1.2.5"
+    "minimist": "^1.2.6"
   }
 }
