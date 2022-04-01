@@ -1,4 +1,4 @@
-name: 'Action Buf'
+name: 'Action Buf'#
 description: 'Runs buf commmands to lint and generate protos'
 inputs:
   buf-user:
