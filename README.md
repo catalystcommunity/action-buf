@@ -1,11 +1,11 @@
 <!-- start title -->
 
-# GitHub Action:Hello World
+# GitHub Action:Action Buf
 
 <!-- end title -->
 <!-- start description -->
 
-Greet someone
+Runs buf commmands to lint and generate protos
 
 <!-- end description -->
 <!-- start contents -->
@@ -13,19 +13,67 @@ Greet someone
 <!-- start usage -->
 
 ```yaml
-- uses: catalystsquad/action-composite-action-template@undefined
+- uses: catalystsquad/action-buf@undefined
   with:
-    # Who to greet
-    # Default: World
-    who-to-greet: ""
+    # Buf user
+    buf-user: ""
+
+    # Buf token
+    buf-token: ""
+
+    # Git token to use
+    # Default: ${{ github.token }}
+    token: ""
+
+    # Subdirectory to use with buf push
+    # Default: .
+    push-dir: ""
+
+    # Ref to checkout
+    # Default: ${{ github.head_ref }}
+    ref: ""
+
+    # Run `buf lint`
+    # Default: true
+    lint: ""
+
+    # Run `buf generate`
+    # Default: true
+    generate: ""
+
+    # Run `buf breaking`
+    # Default: true
+    breaking: ""
+
+    # Run `buf mod prune`
+    # Default: true
+    mod-prune: ""
+
+    # Run `buf mod update`
+    # Default: true
+    mod-update: ""
+
+    # Run `buf push`
+    # Default: false
+    push: ""
 ```
 
 <!-- end usage -->
 <!-- start inputs -->
 
-| **Input**          | **Description** | **Default** | **Required** |
-| :----------------- | :-------------- | :---------: | :----------: |
-| **`who-to-greet`** | Who to greet    |   `World`   |   **true**   |
+| **Input**        | **Description**                   |       **Default**        | **Required** |
+| :--------------- | :-------------------------------- | :----------------------: | :----------: |
+| **`buf-user`**   | Buf user                          |                          |   **true**   |
+| **`buf-token`**  | Buf token                         |                          |   **true**   |
+| **`token`**      | Git token to use                  |  `${{ github.token }}`   |  **false**   |
+| **`push-dir`**   | Subdirectory to use with buf push |           `.`            |  **false**   |
+| **`ref`**        | Ref to checkout                   | `${{ github.head_ref }}` |  **false**   |
+| **`lint`**       | Run `buf lint`                    |          `true`          |  **false**   |
+| **`generate`**   | Run `buf generate`                |          `true`          |  **false**   |
+| **`breaking`**   | Run `buf breaking`                |          `true`          |  **false**   |
+| **`mod-prune`**  | Run `buf mod prune`               |          `true`          |  **false**   |
+| **`mod-update`** | Run `buf mod update`              |          `true`          |  **false**   |
+| **`push`**       | Run `buf push`                    |         `false`          |  **false**   |
 
 <!-- end inputs -->
 <!-- start outputs -->
