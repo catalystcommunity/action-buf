@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/catalystsquad/action-buf/compare/v1.0.0...v1.0.1) (2022-04-12)
+
+
+### Bug Fixes
+
+* Add support for generating graphql types via https://github.com/danielvladco/go-proto-gql ([#8](https://github.com/catalystsquad/action-buf/issues/8)) ([c7a78cc](https://github.com/catalystsquad/action-buf/commit/c7a78cccee52867a360bd3bb4ae494bf2ea053ff))
+
 # 1.0.0 (2022-04-01)
 
 
