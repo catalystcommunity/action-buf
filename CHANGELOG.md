@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/catalystsquad/action-buf/compare/v1.0.3...v1.0.4) (2022-04-14)
+
+
+### Bug Fixes
+
+* Create the directory first, then copy ([#11](https://github.com/catalystsquad/action-buf/issues/11)) ([1e4e5fe](https://github.com/catalystsquad/action-buf/commit/1e4e5fe509e85de46bb11469c43627fbacad9b47))
+
 ## [1.0.3](https://github.com/catalystsquad/action-buf/compare/v1.0.2...v1.0.3) (2022-04-14)
 
 
