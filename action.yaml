@@ -27,6 +27,14 @@ inputs:
     description: 'Run `buf generate`'
     required: false
     default: 'true'
+  generate-typescript:
+    description: 'Generate typescript types. If true, @grpc/proto-loader will be used to generate grpc stubs and typescript types, and output to dist/nodejs'
+    required: false
+    default: true
+  protos-directory:
+    description: 'Directory where .proto files are. Used only when generating typescript types'
+    required: false
+    default: ""
   breaking:
     description: 'Run `buf breaking`'
     required: false
@@ -86,8 +94,7 @@ runs:
     - name: Install Javascript and Typescript dependencies
       shell: bash
       run: |
-        npm install grpc-tools@1.9.1 --global
-        npm install grpc_tools_node_protoc_ts@5.0.1 --global
+        npm install @grpc/proto-loader --global
     - name: Sign into BSR
       shell: bash
       run: |
@@ -110,6 +117,17 @@ runs:
       shell: bash
       run: |
         buf generate
+    - name: Verify generate typescript config
+      if: inputs.generate-typescript == 'true' && inputs.protos-directory == ''
+      shell: bash
+      run: |
+        echo "protos-directory input is required when generating typescript types"
+        exit 1
+    - name: Generate typescript stubs
+      if: inputs.generate-typescript == 'true'
+      shell: bash
+      run: |
+        proto-loader-gen-types --longs=String --enums=String --defaults --oneofs --grpcLib=@grpc/grpc-js --outDir=dist/nodejs ${{inputs.protos-directory}}/**/*.proto
     - name: Commit generated protos
       if: inputs.generate == 'true'
       uses: stefanzweifel/git-auto-commit-action@v4
