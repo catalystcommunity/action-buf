@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/catalystsquad/action-buf/compare/v1.0.1...v1.0.2) (2022-04-14)
+
+
+### Bug Fixes
+
+* Enhanced typescript support ([#9](https://github.com/catalystsquad/action-buf/issues/9)) ([6acea6e](https://github.com/catalystsquad/action-buf/commit/6acea6e9341aade9db38469ff87faf49eed2b2cc))
+
 ## [1.0.1](https://github.com/catalystsquad/action-buf/compare/v1.0.0...v1.0.1) (2022-04-12)
 
 
