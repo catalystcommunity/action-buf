@@ -31,8 +31,8 @@ inputs:
     description: 'Generate typescript types. If true, @grpc/proto-loader will be used to generate grpc stubs and typescript types, and output to dist/nodejs'
     required: false
     default: true
-  protos-directory:
-    description: 'Directory where .proto files are. Used only when generating typescript types'
+  generate-typescript-protos:
+    description: 'Path from project root to proto files to generate typescript types for. If multiple files, it should be space separated, not comma separated'
     required: false
     default: ""
   breaking:
@@ -113,17 +113,20 @@ runs:
       run: |
         node ${{ github.action_path }}/buf.js --workingDirectory='${{ github.workspace }}' --bufCommand='mod update'
     - name: Verify generate typescript config
-      if: inputs.generate-typescript == 'true' && inputs.protos-directory == ''
+      if: inputs.generate-typescript == 'true' && inputs.generate-typescript-protos == ''
       shell: bash
       run: |
-        echo "protos-directory input is required when generating typescript types"
+        echo "generate-typescript-protos must be defined to generate typescript stubs"
         exit 1
     - name: Generate typescript stubs
       if: inputs.generate-typescript == 'true'
-      working-directory: ${{inputs.protos-directory}}
       shell: bash
       run: |
-        proto-loader-gen-types --longs=String --enums=String --defaults --oneofs --grpcLib=@grpc/grpc-js --outDir=../dist/nodejs **/*.proto
+        files=(${{ inputs.generate-typescript-protos }})
+        for i in "${files[@]}"
+        do
+          proto-loader-gen-types --longs=String --enums=String --defaults --oneofs --grpcLib=@grpc/grpc-js --outDir=dist/nodejs $i
+        done
     - name: Run buf generate
       if: inputs.generate == 'true'
       shell: bash
