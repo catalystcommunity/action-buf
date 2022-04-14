@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/catalystsquad/action-buf/compare/v1.0.2...v1.0.3) (2022-04-14)
+
+
+### Bug Fixes
+
+* Copy the .proto file, it's necessary for typescript clients ([#10](https://github.com/catalystsquad/action-buf/issues/10)) ([6674459](https://github.com/catalystsquad/action-buf/commit/6674459b5c097c01d87ec09f40e861688e622855))
+
 ## [1.0.2](https://github.com/catalystsquad/action-buf/compare/v1.0.1...v1.0.2) (2022-04-14)
 
 
