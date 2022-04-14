@@ -129,6 +129,7 @@ runs:
         for i in "${files[@]}"
         do
           proto-loader-gen-types --longs=String --enums=String --defaults --oneofs --grpcLib=@grpc/grpc-js --outDir=dist/nodejs $i
+          cp $i dist/nodejs
         done
     - name: Run buf generate
       if: inputs.generate == 'true'
