@@ -112,11 +112,6 @@ runs:
       shell: bash
       run: |
         node ${{ github.action_path }}/buf.js --workingDirectory='${{ github.workspace }}' --bufCommand='mod update'
-    - name: Run buf generate
-      if: inputs.generate == 'true'
-      shell: bash
-      run: |
-        buf generate
     - name: Verify generate typescript config
       if: inputs.generate-typescript == 'true' && inputs.protos-directory == ''
       shell: bash
@@ -129,6 +124,11 @@ runs:
       shell: bash
       run: |
         proto-loader-gen-types --longs=String --enums=String --defaults --oneofs --grpcLib=@grpc/grpc-js --outDir=../dist/nodejs **/*.proto
+    - name: Run buf generate
+      if: inputs.generate == 'true'
+      shell: bash
+      run: |
+        buf generate
     - name: Commit generated protos
       if: inputs.generate == 'true'
       uses: stefanzweifel/git-auto-commit-action@v4
