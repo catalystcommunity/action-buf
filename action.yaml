@@ -125,9 +125,10 @@ runs:
         exit 1
     - name: Generate typescript stubs
       if: inputs.generate-typescript == 'true'
+      working-directory: ${{inputs.protos-directory}}
       shell: bash
       run: |
-        proto-loader-gen-types --longs=String --enums=String --defaults --oneofs --grpcLib=@grpc/grpc-js --outDir=dist/nodejs ${{github.workspace}}/${{inputs.protos-directory}}/**/*.proto
+        proto-loader-gen-types --longs=String --enums=String --defaults --oneofs --grpcLib=@grpc/grpc-js --outDir=../dist/nodejs **/*.proto
     - name: Commit generated protos
       if: inputs.generate == 'true'
       uses: stefanzweifel/git-auto-commit-action@v4
