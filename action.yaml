@@ -32,7 +32,7 @@ inputs:
     required: false
     default: true
   generate-typescript-protos:
-    description: 'Path from project root to proto files to generate typescript types for. If multiple files, it should be space separated, not comma separated'
+    description: 'Space delineated string of paths from project root to proto files to generate typescript types for.'
     required: false
     default: ""
   breaking:
@@ -121,6 +121,9 @@ runs:
     - name: Generate typescript stubs
       if: inputs.generate-typescript == 'true'
       shell: bash
+      # I tried using glob patterns for the protos like ${{ inputs.protos-dir}}/**/*.proto but it fails every time
+      # with errors about not finding the file. It works locally so I'm not sure why it doesn't work here. The chosen
+      # workaround is to require the user to be explicit about which proto files to generate, and process them in a loop
       run: |
         files=(${{ inputs.generate-typescript-protos }})
         for i in "${files[@]}"
