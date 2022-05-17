@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/catalystsquad/action-buf/compare/v1.0.4...v1.0.5) (2022-05-17)
+
+
+### Bug Fixes
+
+* Allow proto-loader configuration with sensible default that includes keepCase to keep the proto casing. ([#12](https://github.com/catalystsquad/action-buf/issues/12)) ([f57902b](https://github.com/catalystsquad/action-buf/commit/f57902bada161c0f906987614400db9dd6ee2862))
+
 ## [1.0.4](https://github.com/catalystsquad/action-buf/compare/v1.0.3...v1.0.4) (2022-04-14)
 
 
