@@ -78,7 +78,7 @@ runs:
         restore-keys: |
           ${{ runner.os }}-go-
     - name: Setup buf
-      uses: bufbuild/buf-setup-action@v0.6.0
+      uses: bufbuild/buf-setup-action@v1.4.0
       with:
         github_token: ${{ github.token }}
     - name: Install Protoc
