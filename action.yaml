@@ -126,6 +126,11 @@ runs:
       run: |
         echo "generate-typescript-protos must be defined to generate typescript stubs"
         exit 1
+    - name: Run buf generate
+      if: inputs.generate == 'true'
+      shell: bash
+      run: |
+        buf generate
     - name: Generate typescript stubs
       if: inputs.generate-typescript == 'true'
       shell: bash
@@ -140,11 +145,6 @@ runs:
           mkdir -p dist/nodejs/${i%/*}
           cp $i dist/nodejs/$i
         done
-    - name: Run buf generate
-      if: inputs.generate == 'true'
-      shell: bash
-      run: |
-        buf generate
     - name: Commit generated protos
       if: inputs.generate == 'true'
       uses: stefanzweifel/git-auto-commit-action@v4
