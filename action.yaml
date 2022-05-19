@@ -163,10 +163,10 @@ runs:
       # with errors about not finding the file. It works locally so I'm not sure why it doesn't work here. The chosen
       # workaround is to require the user to be explicit about which proto files to generate, and process them in a loop
       run: |
-        mkdir -p ${{ inputs.graphql-schema-output-directory }}
         files=(${{ inputs.generate-graphql-protos }})
         for i in "${files[@]}"
         do
+          mkdir -p ${{ inputs.graphql-schema-output-directory }}/${i%/*}
           proto2graphql --input $i --output ${{ inputs.graphql-schema-output-directory }}/${i%.*}.graphql ${{ inputs.generate-graphql-args }}
         done
     - name: Commit generated protos
