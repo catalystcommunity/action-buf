@@ -55,6 +55,22 @@ inputs:
     description: 'Arguments to pass to proto loader (https://www.npmjs.com/package/@grpc/proto-loader)'
     required: false
     default: '--keepCase --longs=String --enums=String --defaults --oneofs --grpcLib=@grpc/grpc-js'
+  generate-graphql:
+    description: 'Set to true to generate graphql schemas for proto files using https://www.npmjs.com/package/@catalystsquad/proto2graphql'
+    required: false
+    default: true
+  generate-graphql-args:
+    description: 'Args used when generating graphql schemas'
+    required: false
+    default: '--keep-case'
+  generate-graphql-protos:
+    description: 'Space delineated string of paths from project root to proto files to generate graphql schemas for.'
+    required: false
+    default: ""
+  graphql-schema-output-directory:
+    description: 'Output directory for graphql schemas'
+    required: false
+    default: 'dist/nodejs/graphql'
 runs:
   using: "composite"
   steps:
@@ -94,11 +110,10 @@ runs:
       run: |
         go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
         go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-        go install github.com/danielvladco/go-proto-gql/protoc-gen-gql@v0.8.0
     - name: Install Javascript and Typescript dependencies
       shell: bash
       run: |
-        npm install @grpc/proto-loader --global
+        npm install @grpc/proto-loader @catalystsquad/proto2graphql  --global
     - name: Sign into BSR
       shell: bash
       run: |
@@ -141,6 +156,19 @@ runs:
       shell: bash
       run: |
         buf generate
+    - name: Generate graphql schemas
+      if: inputs.generate-graphql == 'true'
+      shell: bash
+      # I tried using glob patterns for the protos like ${{ inputs.protos-dir}}/**/*.proto but it fails every time
+      # with errors about not finding the file. It works locally so I'm not sure why it doesn't work here. The chosen
+      # workaround is to require the user to be explicit about which proto files to generate, and process them in a loop
+      run: |
+        mkdir -p ${{ inputs.graphql-schema-output-directory }}
+        files=(${{ inputs.generate-graphql-protos }})
+        for i in "${files[@]}"
+        do
+          proto2graphql --input $i --output ${{ inputs.graphql-schema-output-directory }}/${i%.*}.graphql ${{ inputs.generate-graphql-args }}
+        done
     - name: Commit generated protos
       if: inputs.generate == 'true'
       uses: stefanzweifel/git-auto-commit-action@v4
