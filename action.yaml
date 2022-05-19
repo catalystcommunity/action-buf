@@ -151,11 +151,6 @@ runs:
           mkdir -p dist/nodejs/${i%/*}
           cp $i dist/nodejs/$i
         done
-    - name: Run buf generate
-      if: inputs.generate == 'true'
-      shell: bash
-      run: |
-        buf generate
     - name: Generate graphql schemas
       if: inputs.generate-graphql == 'true'
       shell: bash
@@ -169,6 +164,11 @@ runs:
           mkdir -p ${{ inputs.graphql-schema-output-directory }}/${i%/*}
           proto2graphql --input $i --output ${{ inputs.graphql-schema-output-directory }}/${i%.*}.graphql ${{ inputs.generate-graphql-args }}
         done
+    - name: Run buf generate
+      if: inputs.generate == 'true'
+      shell: bash
+      run: |
+        buf generate
     - name: Commit generated protos
       if: inputs.generate == 'true'
       uses: stefanzweifel/git-auto-commit-action@v4
