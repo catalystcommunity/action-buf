@@ -94,8 +94,11 @@ runs:
       run: |
         go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
         go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-        go install github.com/danielvladco/go-proto-gql/protoc-gen-gql@latest
-        go install github.com/danielvladco/go-proto-gql/protoc-gen-gogql@latest
+        go mod init temp
+        go get github.com/danielvladco/go-proto-gql/protoc-gen-gql
+        go get github.com/danielvladco/go-proto-gql/protoc-gen-gogql
+        go install github.com/danielvladco/go-proto-gql/protoc-gen-gql
+        go install github.com/danielvladco/go-proto-gql/protoc-gen-gogql
     - name: Install Javascript and Typescript dependencies
       shell: bash
       run: |
