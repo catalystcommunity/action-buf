@@ -27,14 +27,6 @@ inputs:
     description: 'Run `buf generate`'
     required: false
     default: 'true'
-  generate-typescript:
-    description: 'Generate typescript types. If true, @grpc/proto-loader will be used to generate grpc stubs and typescript types, and output to dist/nodejs'
-    required: false
-    default: true
-  generate-typescript-protos:
-    description: 'Space delineated string of paths from project root to proto files to generate typescript types for.'
-    required: false
-    default: ""
   breaking:
     description: 'Run `buf breaking`'
     required: false
@@ -51,10 +43,6 @@ inputs:
     description: 'Run `buf push`'
     required: false
     default: 'false'
-  ts-proto-args:
-    description: 'Arguments to pass to proto loader (https://www.npmjs.com/package/@grpc/proto-loader)'
-    required: false
-    default: '--keepCase --longs=String --enums=String --defaults --oneofs --grpcLib=@grpc/grpc-js'
 runs:
   using: "composite"
   steps:
@@ -99,10 +87,6 @@ runs:
         go get github.com/danielvladco/go-proto-gql/protoc-gen-gogql
         go install github.com/danielvladco/go-proto-gql/protoc-gen-gql
         go install github.com/danielvladco/go-proto-gql/protoc-gen-gogql
-    - name: Install Javascript and Typescript dependencies
-      shell: bash
-      run: |
-        npm install @grpc/proto-loader --global
     - name: Sign into BSR
       shell: bash
       run: |
@@ -120,31 +104,11 @@ runs:
       shell: bash
       run: |
         node ${{ github.action_path }}/buf.js --workingDirectory='${{ github.workspace }}' --bufCommand='mod update'
-    - name: Verify generate typescript config
-      if: inputs.generate-typescript == 'true' && inputs.generate-typescript-protos == ''
-      shell: bash
-      run: |
-        echo "generate-typescript-protos must be defined to generate typescript stubs"
-        exit 1
     - name: Run buf generate
       if: inputs.generate == 'true'
       shell: bash
       run: |
         buf generate
-    - name: Generate typescript stubs
-      if: inputs.generate-typescript == 'true'
-      shell: bash
-      # I tried using glob patterns for the protos like ${{ inputs.protos-dir}}/**/*.proto but it fails every time
-      # with errors about not finding the file. It works locally so I'm not sure why it doesn't work here. The chosen
-      # workaround is to require the user to be explicit about which proto files to generate, and process them in a loop
-      run: |
-        files=(${{ inputs.generate-typescript-protos }})
-        for i in "${files[@]}"
-        do
-          proto-loader-gen-types ${{ inputs.ts-proto-args }} --outDir=dist/nodejs $i
-          mkdir -p dist/nodejs/${i%/*}
-          cp $i dist/nodejs/$i
-        done
     - name: Commit generated protos
       if: inputs.generate == 'true'
       uses: stefanzweifel/git-auto-commit-action@v4
