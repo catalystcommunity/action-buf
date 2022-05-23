@@ -77,7 +77,9 @@ runs:
       uses: actions/setup-go@v2
       with:
         go-version: 1.18.x
-    - name: Install protoc plugin dependencies # using hash for gql because we need changes that haven't released yet, but don't want to pin to master
+    - name: Install protoc plugin dependencies
+      # using hash for gql because we need changes that haven't released yet, but don't want to pin to master
+      # using our own fork of protobuf-ts to support `?` syntax until our PR is merged to their repo
       shell: bash
       run: |
         npm install -g @catalystsquad/protobuf-ts
