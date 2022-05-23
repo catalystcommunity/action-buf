@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/catalystsquad/action-buf/compare/v1.0.5...v1.0.6) (2022-05-23)
+
+
+### Bug Fixes
+
+* Use forked version of protobuf-ts, and use protoc-gen-gql pinned to a git hash that has better support for protobuf uptional fields ([#13](https://github.com/catalystsquad/action-buf/issues/13)) ([d6085c8](https://github.com/catalystsquad/action-buf/commit/d6085c8dc9a7fa3e6bd28808c2f182581a89dbaf))
+
 ## [1.0.5](https://github.com/catalystsquad/action-buf/compare/v1.0.4...v1.0.5) (2022-05-17)
 
 
