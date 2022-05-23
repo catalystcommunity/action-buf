@@ -41,16 +41,6 @@ Runs buf commmands to lint and generate protos
     # Default: true
     generate: ""
 
-    # Generate typescript types. If true, @grpc/proto-loader will be used to generate
-    # grpc stubs and typescript types, and output to dist/nodejs
-    # Default: true
-    generate-typescript: ""
-
-    # Space delineated string of paths from project root to proto files to generate
-    # typescript types for.
-    # Default:
-    generate-typescript-protos: ""
-
     # Run `buf breaking`
     # Default: true
     breaking: ""
@@ -66,31 +56,24 @@ Runs buf commmands to lint and generate protos
     # Run `buf push`
     # Default: false
     push: ""
-
-    # Arguments to pass to proto loader (https://www.npmjs.com/package/@grpc/proto-loader)
-    # Default: --keepCase --longs=String --enums=String --defaults --oneofs --grpcLib=@grpc/grpc-js
-    ts-proto-args: ""
 ```
 
 <!-- end usage -->
 <!-- start inputs -->
 
-| **Input**                        | **Description**                                                                                                                            |                                      **Default**                                       | **Required** |
-| :------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------: | :----------: |
-| **`buf-user`**                   | Buf user                                                                                                                                   |                                                                                        |   **true**   |
-| **`buf-token`**                  | Buf token                                                                                                                                  |                                                                                        |   **true**   |
-| **`token`**                      | Git token to use                                                                                                                           |                                 `${{ github.token }}`                                  |  **false**   |
-| **`push-dir`**                   | Subdirectory to use with buf push                                                                                                          |                                          `.`                                           |  **false**   |
-| **`ref`**                        | Ref to checkout                                                                                                                            |                                `${{ github.head_ref }}`                                |  **false**   |
-| **`lint`**                       | Run `buf lint`                                                                                                                             |                                         `true`                                         |  **false**   |
-| **`generate`**                   | Run `buf generate`                                                                                                                         |                                         `true`                                         |  **false**   |
-| **`generate-typescript`**        | Generate typescript types. If true, @grpc/proto-loader will be used to generate grpc stubs and typescript types, and output to dist/nodejs |                                         `true`                                         |  **false**   |
-| **`generate-typescript-protos`** | Space delineated string of paths from project root to proto files to generate typescript types for.                                        |                                                                                        |  **false**   |
-| **`breaking`**                   | Run `buf breaking`                                                                                                                         |                                         `true`                                         |  **false**   |
-| **`mod-prune`**                  | Run `buf mod prune`                                                                                                                        |                                         `true`                                         |  **false**   |
-| **`mod-update`**                 | Run `buf mod update`                                                                                                                       |                                         `true`                                         |  **false**   |
-| **`push`**                       | Run `buf push`                                                                                                                             |                                        `false`                                         |  **false**   |
-| **`ts-proto-args`**              | Arguments to pass to proto loader (https://www.npmjs.com/package/@grpc/proto-loader)                                                       | `--keepCase --longs=String --enums=String --defaults --oneofs --grpcLib=@grpc/grpc-js` |  **false**   |
+| **Input**        | **Description**                   |       **Default**        | **Required** |
+| :--------------- | :-------------------------------- | :----------------------: | :----------: |
+| **`buf-user`**   | Buf user                          |                          |   **true**   |
+| **`buf-token`**  | Buf token                         |                          |   **true**   |
+| **`token`**      | Git token to use                  |  `${{ github.token }}`   |  **false**   |
+| **`push-dir`**   | Subdirectory to use with buf push |           `.`            |  **false**   |
+| **`ref`**        | Ref to checkout                   | `${{ github.head_ref }}` |  **false**   |
+| **`lint`**       | Run `buf lint`                    |          `true`          |  **false**   |
+| **`generate`**   | Run `buf generate`                |          `true`          |  **false**   |
+| **`breaking`**   | Run `buf breaking`                |          `true`          |  **false**   |
+| **`mod-prune`**  | Run `buf mod prune`               |          `true`          |  **false**   |
+| **`mod-update`** | Run `buf mod update`              |          `true`          |  **false**   |
+| **`push`**       | Run `buf push`                    |         `false`          |  **false**   |
 
 <!-- end inputs -->
 <!-- start outputs -->
