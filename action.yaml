@@ -43,6 +43,10 @@ inputs:
     description: 'Run `buf push`'
     required: false
     default: 'false'
+  commit-message:
+    description: 'commit message to use when pushing generated code'
+    required: false
+    default: '[skip ci]'
 runs:
   using: "composite"
   steps:
@@ -112,6 +116,8 @@ runs:
     - name: Commit generated protos
       if: inputs.generate == 'true'
       uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: ${{ inputs.commit-message }}
     - name: Create BSR repo
       if: inputs.push == 'true'
       shell: bash
