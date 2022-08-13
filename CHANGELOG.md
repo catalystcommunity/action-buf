@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/catalystsquad/action-buf/compare/v1.0.6...v1.0.7) (2022-08-13)
+
+
+### Bug Fixes
+
+* Add configurable commit message ([#14](https://github.com/catalystsquad/action-buf/issues/14)) ([0d43f6d](https://github.com/catalystsquad/action-buf/commit/0d43f6dcd5615600cb8d952ac574136ffa58df18))
+
 ## [1.0.6](https://github.com/catalystsquad/action-buf/compare/v1.0.5...v1.0.6) (2022-05-23)
 
 
