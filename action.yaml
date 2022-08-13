@@ -112,6 +112,8 @@ runs:
       if: inputs.generate == 'true'
       shell: bash
       run: |
+        pwd
+        ls -al
         buf generate
     - name: Commit generated protos
       if: inputs.generate == 'true'
