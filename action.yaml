@@ -15,10 +15,6 @@ inputs:
     description: 'Subdirectory to use with buf push'
     required: false
     default: '.'
-  ref:
-    description: 'Ref to checkout'
-    required: false
-    default: ${{ github.head_ref }}
   lint:
     description: 'Run `buf lint`'
     required: false
@@ -50,11 +46,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        token: ${{ inputs.token }}
-        ref: ${{ inputs.ref }}
     - name: Configure git
       uses: fregante/setup-git-user@v1
     - name: Setup Cache
