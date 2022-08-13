@@ -29,6 +29,11 @@ Runs buf commmands to lint and generate protos
     # Default: .
     push-dir: ""
 
+    # set to true to checkout the repository, set to false if you are checking out the
+    # repository before using this action
+    # Default: true
+    checkout: ""
+
     # Ref to checkout
     # Default: ${{ github.head_ref }}
     ref: ""
@@ -56,24 +61,30 @@ Runs buf commmands to lint and generate protos
     # Run `buf push`
     # Default: false
     push: ""
+
+    # commit message to use when pushing generated code
+    # Default: chore: buf generated code from protos [skip ci]
+    commit-message: ""
 ```
 
 <!-- end usage -->
 <!-- start inputs -->
 
-| **Input**        | **Description**                   |       **Default**        | **Required** |
-| :--------------- | :-------------------------------- | :----------------------: | :----------: |
-| **`buf-user`**   | Buf user                          |                          |   **true**   |
-| **`buf-token`**  | Buf token                         |                          |   **true**   |
-| **`token`**      | Git token to use                  |  `${{ github.token }}`   |  **false**   |
-| **`push-dir`**   | Subdirectory to use with buf push |           `.`            |  **false**   |
-| **`ref`**        | Ref to checkout                   | `${{ github.head_ref }}` |  **false**   |
-| **`lint`**       | Run `buf lint`                    |          `true`          |  **false**   |
-| **`generate`**   | Run `buf generate`                |          `true`          |  **false**   |
-| **`breaking`**   | Run `buf breaking`                |          `true`          |  **false**   |
-| **`mod-prune`**  | Run `buf mod prune`               |          `true`          |  **false**   |
-| **`mod-update`** | Run `buf mod update`              |          `true`          |  **false**   |
-| **`push`**       | Run `buf push`                    |         `false`          |  **false**   |
+| **Input**            | **Description**                                                                                                      |                    **Default**                     | **Required** |
+| :------------------- | :------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------: | :----------: |
+| **`buf-user`**       | Buf user                                                                                                             |                                                    |   **true**   |
+| **`buf-token`**      | Buf token                                                                                                            |                                                    |   **true**   |
+| **`token`**          | Git token to use                                                                                                     |               `${{ github.token }}`                |  **false**   |
+| **`push-dir`**       | Subdirectory to use with buf push                                                                                    |                        `.`                         |  **false**   |
+| **`checkout`**       | set to true to checkout the repository, set to false if you are checking out the repository before using this action |                       `true`                       |  **false**   |
+| **`ref`**            | Ref to checkout                                                                                                      |              `${{ github.head_ref }}`              |  **false**   |
+| **`lint`**           | Run `buf lint`                                                                                                       |                       `true`                       |  **false**   |
+| **`generate`**       | Run `buf generate`                                                                                                   |                       `true`                       |  **false**   |
+| **`breaking`**       | Run `buf breaking`                                                                                                   |                       `true`                       |  **false**   |
+| **`mod-prune`**      | Run `buf mod prune`                                                                                                  |                       `true`                       |  **false**   |
+| **`mod-update`**     | Run `buf mod update`                                                                                                 |                       `true`                       |  **false**   |
+| **`push`**           | Run `buf push`                                                                                                       |                      `false`                       |  **false**   |
+| **`commit-message`** | commit message to use when pushing generated code                                                                    | `chore: buf generated code from protos [skip ci] ` |  **false**   |
 
 <!-- end inputs -->
 <!-- start outputs -->
