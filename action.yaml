@@ -15,6 +15,10 @@ inputs:
     description: 'Subdirectory to use with buf push'
     required: false
     default: '.'
+  checkout:
+    description: 'set to true to checkout the repository, set to false if you are checking out the repository before using this action'
+    required: false
+    default: true
   ref:
     description: 'Ref to checkout'
     required: false
@@ -43,10 +47,15 @@ inputs:
     description: 'Run `buf push`'
     required: false
     default: 'false'
+  commit-message:
+    description: 'commit message to use when pushing generated code'
+    required: false
+    default: 'chore: buf generated code from protos [skip ci] '
 runs:
   using: "composite"
   steps:
     - name: Checkout
+      if: inputs.checkout == 'true'
       uses: actions/checkout@v2
       with:
         token: ${{ inputs.token }}
@@ -112,6 +121,8 @@ runs:
     - name: Commit generated protos
       if: inputs.generate == 'true'
       uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: ${{ inputs.commit-message }}
     - name: Create BSR repo
       if: inputs.push == 'true'
       shell: bash
