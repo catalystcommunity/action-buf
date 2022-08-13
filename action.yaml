@@ -42,7 +42,7 @@ inputs:
   commit-message:
     description: 'commit message to use when pushing generated code'
     required: false
-    default: '[skip ci]'
+    default: '[skip ci] buf generated code from protos'
 runs:
   using: "composite"
   steps:
