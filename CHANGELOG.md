@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/catalystsquad/action-buf/compare/v1.0.7...v1.0.8) (2022-08-15)
+
+
+### Bug Fixes
+
+* Make default commit message ci friendly. If it includes language that causes ci to not run then it doesn't run even when things are squash merged, so it won't work at all. ([#15](https://github.com/catalystsquad/action-buf/issues/15)) ([c6c7231](https://github.com/catalystsquad/action-buf/commit/c6c72314a3ce8ac774d10857fcd1380915cb9e8e))
+
 ## [1.0.7](https://github.com/catalystsquad/action-buf/compare/v1.0.6...v1.0.7) (2022-08-13)
 
 
