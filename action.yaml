@@ -50,7 +50,7 @@ inputs:
   commit-message:
     description: 'commit message to use when pushing generated code'
     required: false
-    default: 'chore: buf generated code from protos [skip ci] '
+    default: 'chore: buf generated code from protos'
 runs:
   using: "composite"
   steps:
