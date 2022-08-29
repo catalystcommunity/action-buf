@@ -94,7 +94,7 @@ runs:
         npm install -g @catalystsquad/protobuf-ts
         go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
         go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-        go install github.com/catalystsquad/go-proto-gql/protoc-gen-gql@5e1d041275598cb8b60c5d06898db7ab4717170f
+        go install github.com/catalystsquad/go-proto-gql/protoc-gen-gql@1b5497b7b28b329666662a94d42bbd1a1b7c983e
     - name: Sign into BSR
       shell: bash
       run: |
