@@ -1,3 +1,11 @@
+## [1.0.9](https://github.com/catalystsquad/action-buf/compare/v1.0.8...v1.0.9) (2022-08-30)
+
+
+### Bug Fixes
+
+* Bump @actions/core from 1.6.0 to 1.9.1 ([#16](https://github.com/catalystsquad/action-buf/issues/16)) ([d4ac78f](https://github.com/catalystsquad/action-buf/commit/d4ac78fb807e5cb0743b7bcdc2f3c945862d2a66))
+* Enhanced gql generation ([#17](https://github.com/catalystsquad/action-buf/issues/17)) ([0fa01f6](https://github.com/catalystsquad/action-buf/commit/0fa01f6c35d980dfaced55d0ad7552ef37c57256))
+
 ## [1.0.8](https://github.com/catalystsquad/action-buf/compare/v1.0.7...v1.0.8) (2022-08-15)
 
 
