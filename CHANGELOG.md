@@ -1,3 +1,10 @@
+## [1.0.10](https://github.com/catalystsquad/action-buf/compare/v1.0.9...v1.0.10) (2022-09-08)
+
+
+### Bug Fixes
+
+* update gql gen commit hash ([#18](https://github.com/catalystsquad/action-buf/issues/18)) ([57f3485](https://github.com/catalystsquad/action-buf/commit/57f3485b22d12e9924de633977a2c52a382d5536))
+
 ## [1.0.9](https://github.com/catalystsquad/action-buf/compare/v1.0.8...v1.0.9) (2022-08-30)
 
 
