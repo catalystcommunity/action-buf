@@ -1,3 +1,10 @@
+## [1.0.11](https://github.com/catalystsquad/action-buf/compare/v1.0.10...v1.0.11) (2022-10-05)
+
+
+### Bug Fixes
+
+* update catalystsquad go-proto-gql version to gain suffix support ([#19](https://github.com/catalystsquad/action-buf/issues/19)) ([bc2b482](https://github.com/catalystsquad/action-buf/commit/bc2b482a910c93eb2723397728dd9ce5d6ffccd6))
+
 ## [1.0.10](https://github.com/catalystsquad/action-buf/compare/v1.0.9...v1.0.10) (2022-09-08)
 
 
