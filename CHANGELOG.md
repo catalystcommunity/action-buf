@@ -1,3 +1,10 @@
+## [1.0.12](https://github.com/catalystsquad/action-buf/compare/v1.0.11...v1.0.12) (2022-12-08)
+
+
+### Bug Fixes
+
+* Update buf setup action version, move bsr login up in the steps ([#21](https://github.com/catalystsquad/action-buf/issues/21)) ([3efb211](https://github.com/catalystsquad/action-buf/commit/3efb211118ddeb404a0ded1a18a7065c104ebeb0))
+
 ## [1.0.11](https://github.com/catalystsquad/action-buf/compare/v1.0.10...v1.0.11) (2022-10-05)
 
 
