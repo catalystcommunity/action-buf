@@ -94,11 +94,12 @@ runs:
       uses: actions/checkout@v3
       with:
         repository: danielvladco/go-proto-gql
+        ref: v0.10.0
         path: go-proto-gql
     - name: Build go-proto-gql
       shell: bash
       run: |
-        cd ${{ github.workspace }}
+        cd ${{ github.workspace }}/go-proto-gql
         make
     - name: Install protoc plugin dependencies
       # using hash for gql because we need changes that haven't released yet, but don't want to pin to master
