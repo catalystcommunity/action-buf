@@ -90,6 +90,16 @@ runs:
       uses: actions/setup-go@v2
       with:
         go-version: 1.18.x
+    - name: Checkout go-proto-gql
+      uses: actions/checkout@v3
+      with:
+        repository: danielvladco/go-proto-gql
+        path: go-proto-gql
+    - name: Build go-proto-gql
+      shell: bash
+      run: |
+        cd ${{ github.workspace }}
+        make
     - name: Install protoc plugin dependencies
       # using hash for gql because we need changes that haven't released yet, but don't want to pin to master
       # using our own fork of protobuf-ts to support `?` syntax until our PR is merged to their repo
@@ -98,7 +108,6 @@ runs:
         npm install -g @protobuf-ts/plugin
         go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
         go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-        go install github.com/danielvladco/go-proto-gql/protoc-gen-gql@latest
     - name: Run buf lint
       if: inputs.lint == 'true'
       uses: bufbuild/buf-lint-action@v1
