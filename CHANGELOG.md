@@ -1,3 +1,10 @@
+## [1.0.13](https://github.com/catalystsquad/action-buf/compare/v1.0.12...v1.0.13) (2023-03-29)
+
+
+### Bug Fixes
+
+* Modify default commit message to use language that will not create new runs when generate commits generated code ([#22](https://github.com/catalystsquad/action-buf/issues/22)) ([c970f75](https://github.com/catalystsquad/action-buf/commit/c970f75ddca355ff018f4033ee5c24c24754e746))
+
 ## [1.0.12](https://github.com/catalystsquad/action-buf/compare/v1.0.11...v1.0.12) (2022-12-08)
 
 
