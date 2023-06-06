@@ -1,3 +1,10 @@
+## [1.0.14](https://github.com/catalystsquad/action-buf/compare/v1.0.13...v1.0.14) (2023-06-06)
+
+
+### Bug Fixes
+
+* remove skip-ci from default commit message ([#24](https://github.com/catalystsquad/action-buf/issues/24)) ([1b9a128](https://github.com/catalystsquad/action-buf/commit/1b9a1283b5f0ade452e774b2197c5bf7f34434ea))
+
 ## [1.0.13](https://github.com/catalystsquad/action-buf/compare/v1.0.12...v1.0.13) (2023-03-29)
 
 
