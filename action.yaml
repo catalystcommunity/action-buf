@@ -62,18 +62,6 @@ runs:
         ref: ${{ inputs.ref }}
     - name: Configure git
       uses: fregante/setup-git-user@v2
-    - name: Setup Cache
-      uses: actions/cache@v2
-      with:
-        # In order:
-        # * Module download cache
-        # * Build cache (Linux)
-        path: |
-          ~/go/pkg/mod
-          ~/.cache/go-build
-        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-        restore-keys: |
-          ${{ runner.os }}-go-
     - name: Setup buf
       uses: bufbuild/buf-setup-action@v1.9.0
       with:
