@@ -1,3 +1,10 @@
+## [1.0.15](https://github.com/catalystsquad/action-buf/compare/v1.0.14...v1.0.15) (2023-09-29)
+
+
+### Bug Fixes
+
+* Update checkout and setup-go versions, update go version to 1.21, remove cache that is now included in setup-go ([#25](https://github.com/catalystsquad/action-buf/issues/25)) ([df3f723](https://github.com/catalystsquad/action-buf/commit/df3f723832f941f2f89b8cfbc2f605cb66fc77b1))
+
 ## [1.0.14](https://github.com/catalystsquad/action-buf/compare/v1.0.13...v1.0.14) (2023-06-06)
 
 
