@@ -56,24 +56,12 @@ runs:
   steps:
     - name: Checkout
       if: inputs.checkout == 'true'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         token: ${{ inputs.token }}
         ref: ${{ inputs.ref }}
     - name: Configure git
       uses: fregante/setup-git-user@v2
-    - name: Setup Cache
-      uses: actions/cache@v2
-      with:
-        # In order:
-        # * Module download cache
-        # * Build cache (Linux)
-        path: |
-          ~/go/pkg/mod
-          ~/.cache/go-build
-        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-        restore-keys: |
-          ${{ runner.os }}-go-
     - name: Setup buf
       uses: bufbuild/buf-setup-action@v1.9.0
       with:
@@ -87,9 +75,9 @@ runs:
       with:
         repo-token: ${{ github.token }}
     - name: Install Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v4
       with:
-        go-version: 1.18.x
+        go-version: 1.21.x
     - name: Install protoc plugin dependencies
       # using hash for gql because we need changes that haven't released yet, but don't want to pin to master
       # using our own fork of protobuf-ts to support `?` syntax until our PR is merged to their repo
