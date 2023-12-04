@@ -1,7 +1,7 @@
 name: 'Action Buf'
 description: 'Runs buf commmands to lint and generate protos'
 inputs:
-  working-dir:
+  working-directory:
     description: Working directory for the buf command
     required: false
     default: '${{ github.workspace }}'
@@ -102,12 +102,12 @@ runs:
       if: inputs.mod-prune == 'true'
       shell: bash
       run: |
-        node ${{ github.action_path }}/buf.js --workingDirectory='${{ inputs.working-dir }}' --bufCommand='mod prune'
+        node ${{ github.action_path }}/buf.js --workingDirectory='${{ inputs.working-directory }}' --bufCommand='mod prune'
     - name: Run buf mod update
       if: inputs.mod-update == 'true'
       shell: bash
       run: |
-        node ${{ github.action_path }}/buf.js --workingDirectory='${{ inputs.working-dir }}' --bufCommand='mod update'
+        node ${{ github.action_path }}/buf.js --workingDirectory='${{ inputs.working-directory }}' --bufCommand='mod update'
     - name: Run buf generate
       if: inputs.generate == 'true'
       shell: bash
@@ -122,7 +122,7 @@ runs:
       if: inputs.push == 'true'
       shell: bash
       run: |
-        node ${{ github.action_path }}/buf.js --workingDirectory='${{ inputs.working-dir }}' --bufCommand='beta registry repository create buf.build/${{ inputs.buf-user }}'
+        node ${{ github.action_path }}/buf.js --workingDirectory='${{ inputs.working-directory }}' --bufCommand='beta registry repository create buf.build/${{ inputs.buf-user }}'
     - name: Run buf push
       if: inputs.push == 'true'
       uses: bufbuild/buf-push-action@v1
