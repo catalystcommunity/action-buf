@@ -1,6 +1,10 @@
 name: 'Action Buf'
 description: 'Runs buf commmands to lint and generate protos'
 inputs:
+  working-dir:
+    description: Working directory for the buf command
+    required: false
+    default: '${{ github.workspace }}'
   buf-user:
     description: 'Buf user'
     required: true
@@ -18,7 +22,7 @@ inputs:
   checkout:
     description: 'set to true to checkout the repository, set to false if you are checking out the repository before using this action'
     required: false
-    default: true
+    default: 'true'
   ref:
     description: 'Ref to checkout'
     required: false
@@ -94,12 +98,12 @@ runs:
       if: inputs.mod-prune == 'true'
       shell: bash
       run: |
-        node ${{ github.action_path }}/buf.js --workingDirectory='${{ github.workspace }}' --bufCommand='mod prune'
+        node ${{ github.action_path }}/buf.js --workingDirectory='${{ inputs.working-dir }}' --bufCommand='mod prune'
     - name: Run buf mod update
       if: inputs.mod-update == 'true'
       shell: bash
       run: |
-        node ${{ github.action_path }}/buf.js --workingDirectory='${{ github.workspace }}' --bufCommand='mod update'
+        node ${{ github.action_path }}/buf.js --workingDirectory='${{ inputs.working-dir }}' --bufCommand='mod update'
     - name: Run buf generate
       if: inputs.generate == 'true'
       shell: bash
@@ -114,7 +118,7 @@ runs:
       if: inputs.push == 'true'
       shell: bash
       run: |
-        node ${{ github.action_path }}/buf.js --workingDirectory='${{ github.workspace }}' --bufCommand='beta registry repository create buf.build/${{ inputs.buf-user }}'
+        node ${{ github.action_path }}/buf.js --workingDirectory='${{ inputs.working-dir }}' --bufCommand='beta registry repository create buf.build/${{ inputs.buf-user }}'
     - name: Run buf push
       if: inputs.push == 'true'
       uses: bufbuild/buf-push-action@v1
