@@ -1,6 +1,10 @@
 name: 'Action Buf'
 description: 'Runs buf commmands to lint and generate protos'
 inputs:
+  working-directory:
+    description: Working directory for the buf command
+    required: false
+    default: '${{ github.workspace }}'
   buf-user:
     description: 'Buf user'
     required: true
@@ -18,7 +22,7 @@ inputs:
   checkout:
     description: 'set to true to checkout the repository, set to false if you are checking out the repository before using this action'
     required: false
-    default: true
+    default: 'true'
   ref:
     description: 'Ref to checkout'
     required: false
@@ -35,6 +39,10 @@ inputs:
     description: 'Run `buf breaking`'
     required: false
     default: 'true'
+  breaking-against:
+    description: 'The against parameter for the buf breaking command'
+    required: false
+    default: 'https://github.com/${GITHUB_REPOSITORY}.git#branch=main'
   mod-prune:
     description: 'Run `buf mod prune`'
     required: false
@@ -43,10 +51,18 @@ inputs:
     description: 'Run `buf mod update`'
     required: false
     default: 'true'
+  registry-login:
+    description: 'Run `buf registry login`'
+    required: false
+    default: 'true'
   push:
     description: 'Run `buf push`'
     required: false
     default: 'false'
+  commit:
+    description: 'enables whether the action will commit and push at the end'
+    required: false
+    default: 'true'
   commit-message:
     description: 'commit message to use when pushing generated code'
     required: false
@@ -67,6 +83,7 @@ runs:
       with:
         github_token: ${{ github.token }}
     - name: Sign into BSR
+      if: inputs.registry-login == 'true'
       shell: bash
       run: |
         echo ${{ inputs.buf-token }} | buf registry login --username ${{ inputs.buf-user }} --token-stdin
@@ -90,23 +107,26 @@ runs:
     - name: Run buf lint
       if: inputs.lint == 'true'
       uses: bufbuild/buf-lint-action@v1
+      with:
+        input: ${{ inputs.working-directory }}
     - name: Run buf mod prune
       if: inputs.mod-prune == 'true'
       shell: bash
       run: |
-        node ${{ github.action_path }}/buf.js --workingDirectory='${{ github.workspace }}' --bufCommand='mod prune'
+        node ${{ github.action_path }}/buf.js --workingDirectory='${{ inputs.working-directory }}' --bufCommand='mod prune'
     - name: Run buf mod update
       if: inputs.mod-update == 'true'
       shell: bash
       run: |
-        node ${{ github.action_path }}/buf.js --workingDirectory='${{ github.workspace }}' --bufCommand='mod update'
+        node ${{ github.action_path }}/buf.js --workingDirectory='${{ inputs.working-directory }}' --bufCommand='mod update'
     - name: Run buf generate
       if: inputs.generate == 'true'
       shell: bash
+      working-directory: ${{ inputs.working-directory }}
       run: |
         buf generate
     - name: Commit generated protos
-      if: inputs.generate == 'true'
+      if: inputs.generate == 'true' && inputs.commit == 'true'
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: ${{ inputs.commit-message }}
@@ -114,7 +134,7 @@ runs:
       if: inputs.push == 'true'
       shell: bash
       run: |
-        node ${{ github.action_path }}/buf.js --workingDirectory='${{ github.workspace }}' --bufCommand='beta registry repository create buf.build/${{ inputs.buf-user }}'
+        node ${{ github.action_path }}/buf.js --workingDirectory='${{ inputs.working-directory }}' --bufCommand='beta registry repository create buf.build/${{ inputs.buf-user }}'
     - name: Run buf push
       if: inputs.push == 'true'
       uses: bufbuild/buf-push-action@v1
@@ -125,4 +145,5 @@ runs:
       if: inputs.breaking == 'true'
       uses: bufbuild/buf-breaking-action@v1
       with:
-        against: 'https://github.com/${GITHUB_REPOSITORY}.git#branch=main'
+        input: ${{ inputs.working-directory }}
+        against: ${{ inputs.breaking-against }}
