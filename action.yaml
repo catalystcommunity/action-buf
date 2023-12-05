@@ -39,6 +39,10 @@ inputs:
     description: 'Run `buf breaking`'
     required: false
     default: 'true'
+  breaking-against:
+    description: 'The against parameter for the buf breaking command'
+    required: false
+    default: 'https://github.com/${GITHUB_REPOSITORY}.git#branch=main'
   mod-prune:
     description: 'Run `buf mod prune`'
     required: false
@@ -141,4 +145,4 @@ runs:
       if: inputs.breaking == 'true'
       uses: bufbuild/buf-breaking-action@v1
       with:
-        against: 'https://github.com/${GITHUB_REPOSITORY}.git#branch=main'
+        against: ${{ inputs.breaking-against }}
