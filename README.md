@@ -15,6 +15,10 @@ Runs buf commmands to lint and generate protos
 ```yaml
 - uses: catalystsquad/action-buf@undefined
   with:
+    # Working directory for the buf command
+    # Default: ${{ github.workspace }}
+    working-directory: ""
+
     # Buf user
     buf-user: ""
 
@@ -50,6 +54,10 @@ Runs buf commmands to lint and generate protos
     # Default: true
     breaking: ""
 
+    # The against parameter for the buf breaking command
+    # Default: https://github.com/${GITHUB_REPOSITORY}.git#branch=main
+    breaking-against: ""
+
     # Run `buf mod prune`
     # Default: true
     mod-prune: ""
@@ -58,9 +66,17 @@ Runs buf commmands to lint and generate protos
     # Default: true
     mod-update: ""
 
+    # Run `buf registry login`
+    # Default: true
+    registry-login: ""
+
     # Run `buf push`
     # Default: false
     push: ""
+
+    # enables whether the action will commit and push at the end
+    # Default: true
+    commit: ""
 
     # commit message to use when pushing generated code
     # Default: chore: buf generated code from protos
@@ -70,21 +86,25 @@ Runs buf commmands to lint and generate protos
 <!-- end usage -->
 <!-- start inputs -->
 
-| **Input**            | **Description**                                                                                                      |               **Default**               | **Required** |
-| :------------------- | :------------------------------------------------------------------------------------------------------------------- | :-------------------------------------: | :----------: |
-| **`buf-user`**       | Buf user                                                                                                             |                                         |   **true**   |
-| **`buf-token`**      | Buf token                                                                                                            |                                         |   **true**   |
-| **`token`**          | Git token to use                                                                                                     |          `${{ github.token }}`          |  **false**   |
-| **`push-dir`**       | Subdirectory to use with buf push                                                                                    |                   `.`                   |  **false**   |
-| **`checkout`**       | set to true to checkout the repository, set to false if you are checking out the repository before using this action |                 `true`                  |  **false**   |
-| **`ref`**            | Ref to checkout                                                                                                      |        `${{ github.head_ref }}`         |  **false**   |
-| **`lint`**           | Run `buf lint`                                                                                                       |                 `true`                  |  **false**   |
-| **`generate`**       | Run `buf generate`                                                                                                   |                 `true`                  |  **false**   |
-| **`breaking`**       | Run `buf breaking`                                                                                                   |                 `true`                  |  **false**   |
-| **`mod-prune`**      | Run `buf mod prune`                                                                                                  |                 `true`                  |  **false**   |
-| **`mod-update`**     | Run `buf mod update`                                                                                                 |                 `true`                  |  **false**   |
-| **`push`**           | Run `buf push`                                                                                                       |                 `false`                 |  **false**   |
-| **`commit-message`** | commit message to use when pushing generated code                                                                    | `chore: buf generated code from protos` |  **false**   |
+| **Input**               | **Description**                                                                                                      |                        **Default**                        | **Required** |
+| :---------------------- | :------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------: | :----------: |
+| **`working-directory`** | Working directory for the buf command                                                                                |                 `${{ github.workspace }}`                 |  **false**   |
+| **`buf-user`**          | Buf user                                                                                                             |                                                           |   **true**   |
+| **`buf-token`**         | Buf token                                                                                                            |                                                           |   **true**   |
+| **`token`**             | Git token to use                                                                                                     |                   `${{ github.token }}`                   |  **false**   |
+| **`push-dir`**          | Subdirectory to use with buf push                                                                                    |                            `.`                            |  **false**   |
+| **`checkout`**          | set to true to checkout the repository, set to false if you are checking out the repository before using this action |                          `true`                           |  **false**   |
+| **`ref`**               | Ref to checkout                                                                                                      |                 `${{ github.head_ref }}`                  |  **false**   |
+| **`lint`**              | Run `buf lint`                                                                                                       |                          `true`                           |  **false**   |
+| **`generate`**          | Run `buf generate`                                                                                                   |                          `true`                           |  **false**   |
+| **`breaking`**          | Run `buf breaking`                                                                                                   |                          `true`                           |  **false**   |
+| **`breaking-against`**  | The against parameter for the buf breaking command                                                                   | `https://github.com/${GITHUB_REPOSITORY}.git#branch=main` |  **false**   |
+| **`mod-prune`**         | Run `buf mod prune`                                                                                                  |                          `true`                           |  **false**   |
+| **`mod-update`**        | Run `buf mod update`                                                                                                 |                          `true`                           |  **false**   |
+| **`registry-login`**    | Run `buf registry login`                                                                                             |                          `true`                           |  **false**   |
+| **`push`**              | Run `buf push`                                                                                                       |                          `false`                          |  **false**   |
+| **`commit`**            | enables whether the action will commit and push at the end                                                           |                          `true`                           |  **false**   |
+| **`commit-message`**    | commit message to use when pushing generated code                                                                    |          `chore: buf generated code from protos`          |  **false**   |
 
 <!-- end inputs -->
 <!-- start outputs -->
