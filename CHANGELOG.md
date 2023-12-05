@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/catalystsquad/action-buf/compare/v1.0.15...v1.1.0) (2023-12-05)
+
+
+### Features
+
+* implement working-directory, breaking-against, commit, registry-login inputs ([#26](https://github.com/catalystsquad/action-buf/issues/26)) ([858d352](https://github.com/catalystsquad/action-buf/commit/858d352afc4cc515eb4172cc7b4e2f2cb5766b8f))
+
 ## [1.0.15](https://github.com/catalystsquad/action-buf/compare/v1.0.14...v1.0.15) (2023-09-29)
 
 
