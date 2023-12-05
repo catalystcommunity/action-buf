@@ -47,6 +47,10 @@ inputs:
     description: 'Run `buf mod update`'
     required: false
     default: 'true'
+  registry-login:
+    description: 'Run `buf registry login`'
+    required: false
+    default: 'true'
   push:
     description: 'Run `buf push`'
     required: false
@@ -75,6 +79,7 @@ runs:
       with:
         github_token: ${{ github.token }}
     - name: Sign into BSR
+      if: inputs.registry-login == 'true'
       shell: bash
       run: |
         echo ${{ inputs.buf-token }} | buf registry login --username ${{ inputs.buf-user }} --token-stdin
