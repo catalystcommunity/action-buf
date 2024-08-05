@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/catalystsquad/action-buf.git"
+    "url": "git+https://github.com/catalystcommunity/action-buf.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/catalystsquad/action-buf/issues"
+    "url": "https://github.com/catalystcommunity/action-buf/issues"
   },
-  "homepage": "https://github.com/catalystsquad/action-buf#readme",
+  "homepage": "https://github.com/catalystcommunity/action-buf#readme",
   "dependencies": {
     "@actions/core": "^1.9.1",
     "minimist": "^1.2.6"

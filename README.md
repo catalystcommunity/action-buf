@@ -13,7 +13,7 @@ Runs buf commmands to lint and generate protos
 <!-- start usage -->
 
 ```yaml
-- uses: catalystsquad/action-buf@undefined
+- uses: catalystcommunity/action-buf@undefined
   with:
     # Working directory for the buf command
     # Default: ${{ github.workspace }}
@@ -129,7 +129,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: crazy-max/ghaction-dump-context@v1
-      - uses: catalystsquad/action-buf@v1
+      - uses: catalystcommunity/action-buf@v1
         with:
           token: ${{ secrets.AUTOMATION_PAT }}
           buf-user: ${{ secrets.BUF_USER }}
