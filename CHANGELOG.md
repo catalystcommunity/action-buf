@@ -1,3 +1,18 @@
+## [1.1.1](https://github.com/catalystcommunity/action-buf/compare/v1.1.0...v1.1.1) (2025-01-02)
+
+
+### Bug Fixes
+
+* move to catalystcommunity ([b4ee7ce](https://github.com/catalystcommunity/action-buf/commit/b4ee7ceeb6b1f137e9971bc7560aee7ea301b2dc))
+* move to catalystcommunity ([dac9608](https://github.com/catalystcommunity/action-buf/commit/dac9608771d3799c9267fcfb896c53d6b102c122))
+* test triggering release ([#28](https://github.com/catalystcommunity/action-buf/issues/28)) ([b681674](https://github.com/catalystcommunity/action-buf/commit/b681674e5f5f5386ed2cc978f336c1961bada23e))
+* update buf version to 1.48.0 ([#27](https://github.com/catalystcommunity/action-buf/issues/27)) ([2a7e7a1](https://github.com/catalystcommunity/action-buf/commit/2a7e7a1e9c7975a2ecf920059b67d2bdab96b18a))
+
+
+### Reverts
+
+* Revert "fix: test triggering release (#28)" (#29) ([70f2a5a](https://github.com/catalystcommunity/action-buf/commit/70f2a5a28e048b6da206cb8b80fd8c8e5f2b98f2)), closes [#28](https://github.com/catalystcommunity/action-buf/issues/28) [#29](https://github.com/catalystcommunity/action-buf/issues/29)
+
 # [1.1.0](https://github.com/catalystcommunity/action-buf/compare/v1.0.15...v1.1.0) (2023-12-05)
 
 
