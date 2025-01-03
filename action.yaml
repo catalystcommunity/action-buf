@@ -100,7 +100,7 @@ runs:
       # using our own fork of protobuf-ts to support `?` syntax until our PR is merged to their repo
       shell: bash
       run: |
-        npm install -g @catalystcommunity/protobuf-ts
+        npm install -g @catalystsquad/protobuf-ts
         go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
         go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
         go install github.com/catalystcommunity/go-proto-gql/protoc-gen-gql@566f192ea0729aa0daddcacf0b3ec2f15f468bdc
