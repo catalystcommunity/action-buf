@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/catalystcommunity/action-buf/compare/v1.1.1...v1.1.2) (2025-01-05)
+
+
+### Bug Fixes
+
+* revert to catalystsquad package name until a catalystcommunity one is released ([#30](https://github.com/catalystcommunity/action-buf/issues/30)) ([33243ec](https://github.com/catalystcommunity/action-buf/commit/33243ec7c6df950314d1f073b4884b8d612759eb))
+
 ## [1.1.1](https://github.com/catalystcommunity/action-buf/compare/v1.1.0...v1.1.1) (2025-01-02)
 
 
