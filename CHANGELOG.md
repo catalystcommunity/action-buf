@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/catalystcommunity/action-buf/compare/v1.1.2...v1.1.3) (2025-01-08)
+
+
+### Bug Fixes
+
+* update hash for catalystcommunity/go-proto-gql to fix package name in go.mod ([#31](https://github.com/catalystcommunity/action-buf/issues/31)) ([82ccbc2](https://github.com/catalystcommunity/action-buf/commit/82ccbc22909383a12b712576cf6d3485345be548))
+
 ## [1.1.2](https://github.com/catalystcommunity/action-buf/compare/v1.1.1...v1.1.2) (2025-01-05)
 
 
