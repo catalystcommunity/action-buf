@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/catalystcommunity/action-buf/compare/v1.1.3...v1.1.4) (2025-01-08)
+
+
+### Bug Fixes
+
+* update go-proto-gql hash to commit with new app-utils-go version ([#32](https://github.com/catalystcommunity/action-buf/issues/32)) ([7584dc4](https://github.com/catalystcommunity/action-buf/commit/7584dc4e46a2995a1f2e410e87ce4182f4fb5148))
+
 ## [1.1.3](https://github.com/catalystcommunity/action-buf/compare/v1.1.2...v1.1.3) (2025-01-08)
 
 
