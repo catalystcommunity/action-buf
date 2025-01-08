@@ -103,7 +103,7 @@ runs:
         npm install -g @catalystsquad/protobuf-ts
         go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
         go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-        go install github.com/catalystcommunity/go-proto-gql/protoc-gen-gql@785724eb5d0c71d034c68a2f4bc1037b27156c85
+        go install github.com/catalystcommunity/go-proto-gql/protoc-gen-gql@1ec6c85c6008af4415fcec2ebc67549c92aed6b8
     - name: Run buf lint
       if: inputs.lint == 'true'
       uses: bufbuild/buf-lint-action@v1
