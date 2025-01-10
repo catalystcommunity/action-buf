@@ -1,3 +1,5 @@
+# [2.0.0](https://github.com/catalystcommunity/action-buf/compare/v1.1.4...v2.0.0) (2025-01-10)
+
 ## [1.1.4](https://github.com/catalystcommunity/action-buf/compare/v1.1.3...v1.1.4) (2025-01-08)
 
 
