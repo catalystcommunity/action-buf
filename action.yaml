@@ -91,19 +91,6 @@ runs:
       uses: arduino/setup-protoc@v1
       with:
         repo-token: ${{ github.token }}
-    - name: Install Go
-      uses: actions/setup-go@v4
-      with:
-        go-version: 1.21.x
-    - name: Install protoc plugin dependencies
-      # using hash for gql because we need changes that haven't released yet, but don't want to pin to master
-      # using our own fork of protobuf-ts to support `?` syntax until our PR is merged to their repo
-      shell: bash
-      run: |
-        npm install -g @catalystsquad/protobuf-ts
-        go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-        go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-        go install github.com/catalystcommunity/go-proto-gql/protoc-gen-gql@1ec6c85c6008af4415fcec2ebc67549c92aed6b8
     - name: Run buf lint
       if: inputs.lint == 'true'
       uses: bufbuild/buf-lint-action@v1
